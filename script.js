@@ -1,45 +1,64 @@
 /* SUMER — lanseres snart
-   - fargevelger (gul · terrakotta · blaa · gronn · natt), lagres lokalt
+   - live nedtelling til lansering
+   - skjult funksjon: trykk på nedtellingstallene for å bla gjennom fargene
    - påmelding til utelivsbrevet (mailto-overlevering; bytt til ekte API senere) */
 (function () {
   "use strict";
 
-  /* ---------- fargevelger ---------- */
+  /* ---------- skjult fargebytte (trykk på tallene) ---------- */
   var THEMES = {
+    blaa:       "#2438dc",
     gul:        "#f6cb16",
     terrakotta: "#7b3523",
-    blaa:       "#2438dc",
     gronn:      "#1f5e3a",
     natt:       "#111111"
   };
+  var ORDER = ["blaa", "gul", "terrakotta", "gronn", "natt"];
   var STORE = "sumer-theme";
   var root = document.documentElement;
   var themeMeta = document.getElementById("theme-color");
 
   function applyTheme(name) {
-    if (!THEMES[name]) name = "gul";
+    if (!THEMES[name]) name = "blaa";
     root.setAttribute("data-theme", name);
     if (themeMeta) themeMeta.setAttribute("content", THEMES[name]);
-    var btns = document.querySelectorAll(".themes__btn");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].classList.toggle("is-active", btns[i].getAttribute("data-set") === name);
-    }
+  }
+  function nextTheme() {
+    var cur = root.getAttribute("data-theme") || "blaa";
+    var name = ORDER[(ORDER.indexOf(cur) + 1) % ORDER.length];
+    applyTheme(name);
+    try { localStorage.setItem(STORE, name); } catch (e) {}
   }
 
   var saved;
   try { saved = localStorage.getItem(STORE); } catch (e) {}
-  applyTheme(saved || root.getAttribute("data-theme") || "gul");
+  applyTheme(saved || root.getAttribute("data-theme") || "blaa");
 
-  var themeBtns = document.querySelectorAll(".themes__btn");
-  for (var i = 0; i < themeBtns.length; i++) {
-    (function (btn) {
-      btn.addEventListener("click", function () {
-        var name = btn.getAttribute("data-set");
-        applyTheme(name);
-        try { localStorage.setItem(STORE, name); } catch (e) {}
-      });
-    })(themeBtns[i]);
+  var cells = document.querySelectorAll(".count__cell");
+  for (var i = 0; i < cells.length; i++) {
+    cells[i].addEventListener("click", nextTheme);
   }
+
+  /* ---------- nedtelling (1. september 2026, 00:00 Oslo / CEST +02:00) ---------- */
+  var LAUNCH_DATE = new Date("2026-09-01T00:00:00+02:00");
+  var cd = {
+    days: document.getElementById("cd-days"),
+    hours: document.getElementById("cd-hours"),
+    mins: document.getElementById("cd-mins"),
+    secs: document.getElementById("cd-secs")
+  };
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function tick() {
+    if (!cd.days) return;
+    var diff = Math.max(0, LAUNCH_DATE.getTime() - Date.now());
+    var s = Math.floor(diff / 1000);
+    cd.days.textContent = pad(Math.floor(s / 86400));
+    cd.hours.textContent = pad(Math.floor((s % 86400) / 3600));
+    cd.mins.textContent = pad(Math.floor((s % 3600) / 60));
+    cd.secs.textContent = pad(s % 60);
+  }
+  tick();
+  setInterval(tick, 1000);
 
   /* ---------- påmelding ---------- */
   var NEWSLETTER = "utelivsbrevet@vartoslo.no";

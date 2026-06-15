@@ -38,21 +38,32 @@
   <meta name="twitter:description" content="Nightlife. Culture. Music. Conversation. A collective building spaces across West Asia and North Africa and beyond." />
   <meta name="twitter:image" content="https://sumer.forum/assets/og.png" />
 
+  <link rel="alternate" hreflang="en" href="https://sumer.forum/en" />
+  <link rel="alternate" hreflang="no" href="https://sumer.forum/no" />
+  <link rel="alternate" hreflang="x-default" href="https://sumer.forum/" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body id="top">
   <div class="grain" aria-hidden="true"></div>
 
   <nav class="nav">
     <a class="nav__brand" href="#top">SUMER</a>
-    <div class="nav__links">
-      <a href="#about">About</a>
-      <a href="#join">Projects</a>
-      <a href="mailto:utelivsbrevet@vartoslo.no">Contact</a>
+    <div class="nav__menu">
+      <div class="nav__links">
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#join" data-i18n="nav.projects">Projects</a>
+        <a href="mailto:utelivsbrevet@vartoslo.no" data-i18n="nav.contact">Contact</a>
+      </div>
+      <div class="lang" role="group" aria-label="Language / Språk">
+        <button type="button" class="lang__btn" data-lang="en">EN</button>
+        <span class="lang__sep" aria-hidden="true">/</span>
+        <button type="button" class="lang__btn" data-lang="no">NO</button>
+      </div>
       <span class="nav__sun" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="20" height="20" focusable="false">
           <circle cx="12" cy="12" r="4.4" fill="currentColor" />
@@ -67,34 +78,34 @@
   <main>
     <section class="hero" id="about">
       <!-- The SUMER mark links to Instagram (Frozen Jungle — no SUMER handle yet). -->
-      <a class="hero__emblem" href="https://www.instagram.com/frozenxjungle/" target="_blank" rel="noopener noreferrer" aria-label="SUMER on Instagram">
-        <img src="assets/sumer-emblem.png" width="640" height="640" alt="SUMER emblem" decoding="async" />
+      <a class="hero__emblem" href="https://www.instagram.com/frozenxjungle/" target="_blank" rel="noopener noreferrer" data-i18n-aria="aria.ig" aria-label="SUMER on Instagram">
+        <img src="/assets/sumer-emblem.png" width="640" height="640" alt="SUMER emblem" decoding="async" />
       </a>
-      <h1 class="hero__title">Nightlife. Culture.<br />Music. Conversation.</h1>
-      <p class="hero__lede">We build spaces for connection and expression across West Asia and North Africa and beyond.</p>
+      <h1 class="hero__title" data-i18n-html="hero.title">Nightlife. Culture.<br />Music. Conversation.</h1>
+      <p class="hero__lede" data-i18n="hero.lede">We build spaces for connection and expression across West Asia and North Africa and beyond.</p>
     </section>
 
     <section class="count" aria-label="Countdown to launch">
-      <p class="count__label">Launching soon</p>
+      <p class="count__label" data-i18n="count.label">Launching soon</p>
       <div class="count__grid" role="timer">
-        <div class="count__cell"><span class="count__num" id="cd-days">--</span><span class="count__unit">Days</span></div>
+        <div class="count__cell"><span class="count__num" id="cd-days">--</span><span class="count__unit" data-i18n="count.days">Days</span></div>
         <span class="count__sep" aria-hidden="true">:</span>
-        <div class="count__cell"><span class="count__num" id="cd-hours">--</span><span class="count__unit">Hours</span></div>
+        <div class="count__cell"><span class="count__num" id="cd-hours">--</span><span class="count__unit" data-i18n="count.hours">Hours</span></div>
         <span class="count__sep" aria-hidden="true">:</span>
-        <div class="count__cell"><span class="count__num" id="cd-mins">--</span><span class="count__unit">Minutes</span></div>
+        <div class="count__cell"><span class="count__num" id="cd-mins">--</span><span class="count__unit" data-i18n="count.mins">Minutes</span></div>
         <span class="count__sep" aria-hidden="true">:</span>
-        <div class="count__cell"><span class="count__num" id="cd-secs">--</span><span class="count__unit">Seconds</span></div>
+        <div class="count__cell"><span class="count__num" id="cd-secs">--</span><span class="count__unit" data-i18n="count.secs">Seconds</span></div>
       </div>
     </section>
 
     <section class="join" id="join">
       <div class="join__inner">
         <div class="join__text">
-          <h2 class="join__title">Join the movement.</h2>
-          <p class="join__sub">Culture. Events. New projects.</p>
+          <h2 class="join__title" data-i18n="join.title">Join the movement.</h2>
+          <p class="join__sub" data-i18n="join.sub">Culture. Events. New projects.</p>
 
           <form class="join__form" id="signup-form" novalidate>
-            <label class="visually-hidden" for="email">Email address</label>
+            <label class="visually-hidden" for="email" data-i18n="a11y.email">Email address</label>
             <input
               id="email"
               name="email"
@@ -105,10 +116,11 @@
               autocorrect="off"
               spellcheck="false"
               placeholder="Your email"
+              data-i18n-ph="join.ph"
               required
             />
             <button type="submit">
-              <span class="btn-label">Get notified</span>
+              <span class="btn-label" data-i18n="join.btn">Get notified</span>
               <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" focusable="false">
                 <path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4"
                       stroke-linecap="round" stroke-linejoin="round" />
@@ -118,7 +130,7 @@
           <p class="join__msg" id="form-msg" role="status" aria-live="polite"></p>
         </div>
         <span class="join__emblem" aria-hidden="true">
-          <img src="assets/sumer-emblem.png" width="280" height="280" alt="" decoding="async" />
+          <img src="/assets/sumer-emblem.png" width="280" height="280" alt="" decoding="async" />
         </span>
       </div>
     </section>
@@ -134,6 +146,6 @@
     </nav>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="/script.js" defer></script>
 </body>
 </html>

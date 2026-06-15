@@ -1,0 +1,373 @@
+/* =========================================================
+   SUMER — coming soon
+   Palette: Deep Terracotta · Acid Yellow · Blueish-Pink · Ocean Blue
+   ========================================================= */
+
+:root {
+  --terra:      #6e2f20;
+  --terra-deep: #531e12;
+  --terra-hi:   #8a4128;
+  --cream:      #f4ead7;
+  --cream-dim:  rgba(244, 234, 215, 0.62);
+  --acid:       #e8f880;
+  --orchid:     #d088f8;
+  --ocean:      #4080f8;
+  --ink:        #160c08;
+
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+
+  --maxw: 34rem;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  font-family: var(--font-body);
+  color: var(--cream);
+  background:
+    radial-gradient(120% 90% at 50% -10%, var(--terra-hi) 0%, var(--terra) 42%, var(--terra-deep) 100%);
+  background-color: var(--terra);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* ---- texture & light ------------------------------------ */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.glow {
+  position: fixed;
+  top: -18vh;
+  left: 50%;
+  width: min(90vw, 720px);
+  height: min(90vw, 720px);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 50% 40%,
+      rgba(232, 248, 128, 0.16) 0%,
+      rgba(208, 136, 248, 0.10) 38%,
+      transparent 68%);
+  filter: blur(4px);
+}
+
+/* ---- layout --------------------------------------------- */
+.stage {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.15rem, 4vw, 1.7rem);
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  text-align: center;
+  padding:
+    calc(env(safe-area-inset-top) + clamp(2.2rem, 8vh, 4rem))
+    calc(env(safe-area-inset-right) + 1.5rem)
+    calc(env(safe-area-inset-bottom) + 5.5rem)
+    calc(env(safe-area-inset-left) + 1.5rem);
+}
+
+/* ---- brand / logo --------------------------------------- */
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.85rem, 3.5vw, 1.35rem);
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.brand:active { transform: scale(0.985); }
+
+.medallion {
+  width: clamp(146px, 42vw, 224px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--cream);
+  border: 3px solid var(--acid);
+  box-shadow:
+    0 0 0 7px rgba(244, 234, 215, 0.08),
+    0 22px 50px -18px rgba(0, 0, 0, 0.6);
+  animation: float 7s ease-in-out infinite;
+}
+.medallion img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3.4rem, 19vw, 6.6rem);
+  line-height: 0.86;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  margin: 0;
+  text-shadow: 0 4px 26px rgba(0, 0, 0, 0.28);
+}
+.brand:hover .wordmark { color: #fff; }
+
+/* ---- "is coming" ---------------------------------------- */
+.coming {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.42em;
+  font-size: clamp(0.92rem, 4.6vw, 1.3rem);
+  color: var(--acid);
+  margin: -0.4rem 0 0;
+  padding-left: 0.42em; /* optical: balance the trailing letter-spacing */
+  animation: breathe 4.2s ease-in-out infinite;
+}
+.coming__is { opacity: 0.62; }
+
+/* ---- tagline -------------------------------------------- */
+.tagline {
+  font-size: clamp(0.92rem, 3.6vw, 1.06rem);
+  line-height: 1.55;
+  color: var(--cream-dim);
+  max-width: 26rem;
+  margin: 0;
+  text-wrap: balance;
+}
+.br-desktop { display: none; }
+
+/* ---- signup --------------------------------------------- */
+.signup {
+  width: 100%;
+  max-width: 23rem;
+  margin-top: clamp(0.3rem, 2vw, 0.9rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+}
+.signup__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.15rem, 5vw, 1.45rem);
+  letter-spacing: 0.01em;
+  margin: 0;
+  color: var(--cream);
+}
+.signup__lead {
+  margin: 0 0 0.35rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--cream-dim);
+}
+
+.signup__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.signup__form input {
+  width: 100%;
+  height: 3.25rem;
+  padding: 0 1.1rem;
+  font-family: var(--font-body);
+  font-size: 16px; /* >=16px stops iOS zoom-on-focus */
+  color: var(--cream);
+  background: rgba(244, 234, 215, 0.07);
+  border: 1.5px solid rgba(244, 234, 215, 0.28);
+  border-radius: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.signup__form input::placeholder { color: rgba(244, 234, 215, 0.42); }
+.signup__form input:focus {
+  border-color: var(--acid);
+  background: rgba(244, 234, 215, 0.11);
+  box-shadow: 0 0 0 4px rgba(232, 248, 128, 0.16);
+}
+
+.signup__form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3.25rem;
+  padding: 0 1.4rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  background: var(--acid);
+  border: none;
+  border-radius: 0.95rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 26px -12px rgba(232, 248, 128, 0.7);
+}
+.signup__form button:hover { background: #eeff96; }
+.signup__form button:active { transform: translateY(1px) scale(0.99); }
+.signup__form button svg { transition: transform 0.2s; }
+.signup__form button:hover svg { transform: translateX(3px); }
+
+.signup__msg {
+  min-height: 1.25rem;
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--cream-dim);
+}
+.signup__msg.is-success { color: var(--acid); }
+.signup__msg.is-error { color: #ffc7b0; }
+
+/* ---- instagram ------------------------------------------ */
+.ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  min-height: 44px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--cream);
+  text-decoration: none;
+  border: 1.5px solid rgba(244, 234, 215, 0.22);
+  border-radius: 999px;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s;
+}
+.ig:hover { border-color: var(--orchid); color: #fff; background: rgba(208, 136, 248, 0.1); }
+.ig:active { transform: scale(0.97); }
+
+/* ---- swatches ------------------------------------------- */
+.swatches {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 0.2rem;
+}
+.swatches span {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 3px;
+  background: var(--c);
+  opacity: 0.9;
+}
+
+/* ---- footer --------------------------------------------- */
+.foot {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 1rem 1rem calc(env(safe-area-inset-bottom) + 1rem);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(244, 234, 215, 0.42);
+  pointer-events: none;
+}
+.foot i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+/* ---- entrance animation --------------------------------- */
+.brand, .coming, .tagline, .signup, .ig, .swatches {
+  animation-duration: 0.9s;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+  animation-fill-mode: both;
+}
+.brand   { animation-name: rise; animation-delay: 0.05s; }
+.coming  { animation-name: rise, breathe; animation-delay: 0.18s, 0.9s; animation-duration: 0.9s, 4.2s; }
+.tagline { animation-name: rise; animation-delay: 0.30s; }
+.signup  { animation-name: rise; animation-delay: 0.42s; }
+.ig      { animation-name: rise; animation-delay: 0.54s; }
+.swatches{ animation-name: rise; animation-delay: 0.64s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.6; }
+}
+
+/* keep the medallion float separate from the entrance animation */
+.brand .medallion { animation-name: float; animation-delay: 0.9s; }
+
+/* ---- larger screens ------------------------------------- */
+@media (min-width: 600px) {
+  .br-desktop { display: inline; }
+  .signup__form { flex-direction: row; }
+  .signup__form input { flex: 1; }
+  .signup__form button { flex: 0 0 auto; }
+}
+
+/* ---- accessibility -------------------------------------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--acid);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -3,9 +3,5 @@
   "framework": null,
   "buildCommand": "",
   "installCommand": "",
-  "outputDirectory": ".",
-  "rewrites": [
-    { "source": "/en", "destination": "/index.html" },
-    { "source": "/no", "destination": "/index.html" }
-  ]
+  "outputDirectory": "."
 }

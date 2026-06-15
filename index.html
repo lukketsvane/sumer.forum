@@ -1,48 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nb" data-theme="gul">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="color-scheme" content="dark" />
 
-  <title>SUMER · Launching soon</title>
-  <meta name="description" content="SUMER — Nightlife. Culture. Music. Conversation. We build spaces for connection and expression across West Asia and North Africa and beyond. Launching soon." />
+  <title>SUMER · Lanseres snart</title>
+  <meta name="description" content="SUMER — Uteliv. Kultur. Musikk. Samtale. Vi bygger rom for fellesskap og uttrykk på tvers av Vest-Asia og Nord-Afrika – og videre. Lanseres snart." />
 
-  <!-- Favicons / PWA icons -->
+  <!-- Favicons / PWA-ikoner -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
-  <!-- Driven dynamically by script.js so the status bar tints to the section in view. -->
-  <meta id="theme-color" name="theme-color" content="#5e2417" />
-  <meta name="msapplication-TileColor" content="#7B3523" />
-  <meta name="msapplication-config" content="/browserconfig.xml" />
-
+  <meta id="theme-color" name="theme-color" content="#f6cb16" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="SUMER" />
   <meta name="format-detection" content="telephone=no" />
 
-  <!-- Open Graph / social -->
+  <!-- Open Graph / sosiale medier -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="SUMER" />
-  <meta property="og:title" content="SUMER — Launching soon" />
-  <meta property="og:description" content="Nightlife. Culture. Music. Conversation. We build spaces for connection and expression across West Asia and North Africa and beyond." />
+  <meta property="og:title" content="SUMER — Lanseres snart" />
+  <meta property="og:description" content="Uteliv. Kultur. Musikk. Samtale. Vi bygger rom for fellesskap og uttrykk på tvers av Vest-Asia og Nord-Afrika – og videre." />
   <meta property="og:url" content="https://sumer.forum" />
   <meta property="og:image" content="https://sumer.forum/assets/og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SUMER — Launching soon" />
-  <meta name="twitter:description" content="Nightlife. Culture. Music. Conversation. A collective building spaces across West Asia and North Africa and beyond." />
+  <meta name="twitter:title" content="SUMER — Lanseres snart" />
+  <meta name="twitter:description" content="Uteliv. Kultur. Musikk. Samtale. Et kollektiv som bygger rom på tvers av Vest-Asia og Nord-Afrika – og videre." />
   <meta name="twitter:image" content="https://sumer.forum/assets/og.png" />
-
-  <link rel="alternate" hreflang="en" href="https://sumer.forum/en" />
-  <link rel="alternate" hreflang="no" href="https://sumer.forum/no" />
-  <link rel="alternate" hreflang="x-default" href="https://sumer.forum/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,63 +41,42 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body id="top">
-  <div class="grain" aria-hidden="true"></div>
-
   <nav class="nav">
     <a class="nav__brand" href="#top">SUMER</a>
     <div class="nav__menu">
       <div class="nav__links">
-        <a href="#about" data-i18n="nav.about">About</a>
-        <a href="#join" data-i18n="nav.projects">Projects</a>
-        <a href="mailto:utelivsbrevet@vartoslo.no" data-i18n="nav.contact">Contact</a>
+        <a href="#about">Om</a>
+        <a href="#join">Prosjekter</a>
+        <a href="mailto:utelivsbrevet@vartoslo.no">Kontakt</a>
       </div>
-      <div class="lang" role="group" aria-label="Language / Språk">
-        <button type="button" class="lang__btn" data-lang="en">EN</button>
-        <span class="lang__sep" aria-hidden="true">/</span>
-        <button type="button" class="lang__btn" data-lang="no">NO</button>
+      <div class="themes" role="group" aria-label="Farge">
+        <button type="button" class="themes__btn" data-set="gul" aria-label="Gul"></button>
+        <button type="button" class="themes__btn" data-set="terrakotta" aria-label="Terrakotta"></button>
+        <button type="button" class="themes__btn" data-set="blaa" aria-label="Blå"></button>
+        <button type="button" class="themes__btn" data-set="gronn" aria-label="Grønn"></button>
+        <button type="button" class="themes__btn" data-set="natt" aria-label="Natt"></button>
       </div>
-      <span class="nav__sun" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="20" height="20" focusable="false">
-          <circle cx="12" cy="12" r="4.4" fill="currentColor" />
-          <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-            <path d="M12 2.4v2.6M12 19v2.6M2.4 12h2.6M19 12h2.6M5.2 5.2l1.9 1.9M16.9 16.9l1.9 1.9M18.8 5.2l-1.9 1.9M7.1 16.9l-1.9 1.9" />
-          </g>
-        </svg>
-      </span>
     </div>
   </nav>
 
   <main>
     <section class="hero" id="about">
-      <!-- The SUMER mark links to Instagram (Frozen Jungle — no SUMER handle yet). -->
-      <a class="hero__emblem" href="https://www.instagram.com/frozenxjungle/" target="_blank" rel="noopener noreferrer" data-i18n-aria="aria.ig" aria-label="SUMER on Instagram">
-        <img src="/assets/sumer-emblem.png" width="640" height="640" alt="SUMER emblem" decoding="async" />
+      <!-- SUMER-merket lenker til Instagram (Frozen Jungle — ingen egen SUMER-konto enda). -->
+      <a class="hero__emblem" href="https://www.instagram.com/frozenxjungle/" target="_blank" rel="noopener noreferrer" aria-label="SUMER på Instagram">
+        <img src="/assets/sumer-tegning.jpg" width="640" height="640" alt="SUMER-tegning" decoding="async" />
       </a>
-      <h1 class="hero__title" data-i18n-html="hero.title">Nightlife. Culture.<br />Music. Conversation.</h1>
-      <p class="hero__lede" data-i18n="hero.lede">We build spaces for connection and expression across West Asia and North Africa and beyond.</p>
-    </section>
-
-    <section class="count" aria-label="Countdown to launch">
-      <p class="count__label" data-i18n="count.label">Launching soon</p>
-      <div class="count__grid" role="timer">
-        <div class="count__cell"><span class="count__num" id="cd-days">--</span><span class="count__unit" data-i18n="count.days">Days</span></div>
-        <span class="count__sep" aria-hidden="true">:</span>
-        <div class="count__cell"><span class="count__num" id="cd-hours">--</span><span class="count__unit" data-i18n="count.hours">Hours</span></div>
-        <span class="count__sep" aria-hidden="true">:</span>
-        <div class="count__cell"><span class="count__num" id="cd-mins">--</span><span class="count__unit" data-i18n="count.mins">Minutes</span></div>
-        <span class="count__sep" aria-hidden="true">:</span>
-        <div class="count__cell"><span class="count__num" id="cd-secs">--</span><span class="count__unit" data-i18n="count.secs">Seconds</span></div>
-      </div>
+      <h1 class="hero__title">Uteliv. Kultur.<br />Musikk. Samtale.</h1>
+      <p class="hero__lede">Vi bygger rom for fellesskap og uttrykk på tvers av Vest-Asia og Nord-Afrika – og videre.</p>
     </section>
 
     <section class="join" id="join">
       <div class="join__inner">
         <div class="join__text">
-          <h2 class="join__title" data-i18n="join.title">Join the movement.</h2>
-          <p class="join__sub" data-i18n="join.sub">Culture. Events. New projects.</p>
+          <h2 class="join__title">Bli med i bevegelsen.</h2>
+          <p class="join__sub">Kultur. Arrangementer. Nye prosjekter.</p>
 
           <form class="join__form" id="signup-form" novalidate>
-            <label class="visually-hidden" for="email" data-i18n="a11y.email">Email address</label>
+            <label class="visually-hidden" for="email">E-postadresse</label>
             <input
               id="email"
               name="email"
@@ -117,23 +86,13 @@
               autocapitalize="off"
               autocorrect="off"
               spellcheck="false"
-              placeholder="Your email"
-              data-i18n-ph="join.ph"
+              placeholder="E-posten din"
               required
             />
-            <button type="submit">
-              <span class="btn-label" data-i18n="join.btn">Get notified</span>
-              <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" focusable="false">
-                <path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4"
-                      stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </button>
+            <button type="submit">Få beskjed</button>
           </form>
           <p class="join__msg" id="form-msg" role="status" aria-live="polite"></p>
         </div>
-        <span class="join__emblem" aria-hidden="true">
-          <img src="/assets/sumer-emblem.png" width="280" height="280" alt="" decoding="async" />
-        </span>
       </div>
     </section>
   </main>
@@ -143,7 +102,7 @@
       <span class="foot__word">SUMER</span>
       <span class="foot__ar" lang="ar" dir="rtl">سومر</span>
     </div>
-    <nav class="foot__social" aria-label="Social">
+    <nav class="foot__social" aria-label="Sosiale medier">
       <a href="https://www.instagram.com/frozenxjungle/" target="_blank" rel="noopener noreferrer">Instagram</a>
     </nav>
   </footer>

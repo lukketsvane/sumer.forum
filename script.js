@@ -176,4 +176,44 @@
   });
 
   input.addEventListener("input", function () { if (msg.textContent) setMsg(""); });
+
+  /* ---------- iOS polish: live status-bar tint + sticky nav hairline ----------
+     iOS Safari (and Chrome) recolour the browser/status-bar chrome from the
+     <meta name="theme-color"> value, and pick black/white glyphs from its
+     luminance. We swap it to match whichever section sits under the notch so
+     the status bar always feels part of the page. */
+  var themeMeta = document.getElementById("theme-color");
+  var nav = document.querySelector(".nav");
+  var joinBand = document.getElementById("join");
+  var TERRA = "#5e2417";
+  var ACID = "#e8f870";
+  var lastColor = "";
+
+  function setTheme(color) {
+    if (color === lastColor || !themeMeta) return;
+    lastColor = color;
+    themeMeta.setAttribute("content", color);
+  }
+
+  function syncChrome() {
+    // probe a point just below the status bar / sticky nav
+    var probeY = (nav ? nav.getBoundingClientRect().bottom : 0) + 1;
+    var overAcid = false;
+    if (joinBand) {
+      var r = joinBand.getBoundingClientRect();
+      overAcid = r.top <= probeY && r.bottom >= probeY;
+    }
+    setTheme(overAcid ? ACID : TERRA);
+    if (nav) nav.classList.toggle("is-stuck", window.scrollY > 6);
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { syncChrome(); ticking = false; });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  syncChrome();
 })();

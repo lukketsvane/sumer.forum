@@ -26,22 +26,22 @@
     var email = input.value.trim();
 
     if (!isValid(email)) {
-      setMsg("Skriv inn ei gyldig e-postadresse.", "error");
+      setMsg("Please enter a valid email address.", "error");
       input.focus();
       return;
     }
 
     var subject = encodeURIComponent("Påmelding · utelivsbrevet");
     var body = encodeURIComponent(
-      "Hei!\n\nEg vil melde meg på utelivsbrevet.\nE-post: " +
+      "Hi!\n\nI'd like to sign up for utelivsbrevet.\nEmail: " +
         email +
-        "\n\n— sendt frå sumer.forum"
+        "\n\n— sent from sumer.forum"
     );
 
     window.location.href =
       "mailto:" + NEWSLETTER + "?subject=" + subject + "&body=" + body;
 
-    setMsg("Takk! Fullfør påmeldinga i e-postappen din ✦", "success");
+    setMsg("Thanks! Finish signing up in your mail app ✦", "success");
     form.reset();
   });
 

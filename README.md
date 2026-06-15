@@ -1,49 +1,59 @@
-# SUMER — coming soon
+# SUMER — launching soon
 
-A single-page **"SUMER is coming"** landing site for [sumer.forum](https://sumer.forum).
+The launching-soon page for [sumer.forum](https://sumer.forum).
 
 SUMER is a creative collective working at the intersection of nightlife,
-culture, music and conversation. This page is a placeholder while the full
-site is built: it presents the brand, links to Instagram, and lets visitors
-sign up for the *utelivsbrevet* newsletter.
+culture, music and conversation — *"a collective, not a platform"* — building
+spaces for connection and expression across West Asia and North Africa and
+beyond. This page presents the brand, counts down to launch, links to
+Instagram, and collects sign-ups for the *utelivsbrevet* newsletter.
 
 ## Stack
 
 Plain, dependency-free **static site** — `index.html` + `styles.css` +
 `script.js`. No build step. Deploy the folder as-is to any static host
-(Vercel, Netlify, GitHub Pages, `sumer.iverfinne.no`, …).
+(Vercel, `sumer.iverfinne.no`, …). Served from the web root.
 
 ```
-index.html          markup + meta/OG tags
-styles.css          design system + responsive, iOS-optimised layout
-script.js           newsletter signup handler
-site.webmanifest    PWA manifest
-assets/             logo, icons, social preview (og.png)
+index.html          markup + meta/OG + favicon/PWA tags
+styles.css          terracotta design system, responsive + iOS-optimised
+script.js           countdown + newsletter signup
+manifest.webmanifest, browserconfig.xml, favicon.*, apple-touch-icon.png,
+android-chrome-*, maskable-*, mstile-*, icons/   ← official icon pack (root)
+assets/             sumer-emblem.png, sumer-logo.png, og.png
+assets/textures/    brand textures (see below)
 ```
 
 ## Brand
 
-| Token            | Hex       |
-| ---------------- | --------- |
-| Deep Terracotta  | `#6e2f20` |
-| Acid Yellow      | `#e8f880` |
-| Blueish-Pink     | `#d088f8` |
-| Ocean Blue       | `#4080f8` |
-| Cream            | `#f4ead7` |
+| Token            | Hex       |                          |
+| ---------------- | --------- | ------------------------ |
+| Deep Terracotta  | `#7b3523` | page / cards / theme     |
+| Acid Yellow      | `#e8f870` | actions, accents         |
+| Blueish-Pink     | `#d888f0` | accent                   |
+| Ocean Blue       | `#3878f8` | accent                   |
+| Cream            | `#f4ecde` | type on terracotta       |
 
-Type: **Syne** (display) + **Space Grotesk** (body). Logo by Ida Eva Neverdahl.
+Type: **Fraunces** (display) + **Inter** (UI). Logo / emblem by Ida Eva Neverdahl.
+
+### Textures (`assets/textures/`)
+
+Tileable brand patterns, ready to drop into components as backgrounds:
+
+- `lattice-acid.png` — orchid diamond lattice on acid (used on the "Join the movement" band)
+- `rays-terracotta.png` — cream sunburst lines on terracotta
+- `stars-blue.png` — cream 8-point stars on ocean blue
+- `squiggle-orchid.png` — gold squiggle on orchid
 
 ## Notes / TODO
 
-- **Instagram link** is set to `instagram.com/sumer` in `index.html` —
-  confirm the real handle (e.g. `@frozenxjungle`) and update both anchors.
-- **Newsletter signup** currently opens the visitor's mail app addressed to
-  `utelivsbrevet@vartoslo.no`. Swap for a hosted form/API when available
-  (see `script.js`).
+- **Countdown** targets **2026-09-01** (`LAUNCH_DATE` in `script.js`).
+- **Instagram** links to Frozen Jungle (`@frozenxjungle`) — no SUMER handle yet.
+  SoundCloud + X are omitted from the footer until handles exist.
+- **Signup** opens the visitor's mail app to `utelivsbrevet@vartoslo.no`
+  (no backend). Swap for a hosted form/API when available (see `script.js`).
 
 ## Develop
-
-Just open `index.html`, or serve locally:
 
 ```bash
 python3 -m http.server 8000   # → http://localhost:8000
